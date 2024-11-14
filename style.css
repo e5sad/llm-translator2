@@ -1,0 +1,50 @@
+/* style.css */
+
+/* 확장 프로그램 UI 관련 CSS */
+.llm-translator-settings {
+margin-top: 10px;
+}
+
+.inline-drawer-toggle {
+cursor: pointer;
+padding: 10px;
+background-color: #f0f0f0;
+border-radius: 5px;
+font-weight: bold;
+}
+
+.inline-drawer-content {
+display: none;
+padding-top: 10px;
+}
+
+.flex-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.menu_button {
+background-color: #007BFF;
+color: white;
+border-radius: 5px;
+padding: 5px 10px;
+border: none;
+cursor: pointer;
+}
+
+.menu_button:hover {
+background-color: #0056b3;
+}
+
+/* 구분선 스타일 (hr) */
+.sysHR {
+border-top: solid thin #ccc;
+margin-top: 15px;
+}
+
+/* 번역 모델 및 서브모델 select elements 스타일 */
+#model_select, #submodel_select {
+width: calc(100% - 120px);
+padding: 5px;
+}

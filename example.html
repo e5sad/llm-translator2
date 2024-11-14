@@ -1,0 +1,42 @@
+<div id="llm_translation_container" class="llm-translator-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b>LLM Translator Settings</b>
+            <div class="inline-drawer-icon fa-solid fa-brain down"></div>
+        </div>
+
+        <div class="inline-drawer-content">
+            <div class="llm-translator_block flex-container">
+                <label for="llm_translation_provider">LLM Provider:</label>
+                <select id="llm_translation_provider">
+                    <option value="openai">OpenAI</option>
+                    <option value="claude">Claude</option>
+                    <option value="cohere">Cohere</option>
+                    <option value="google">Google (Gemini)</option>
+                </select>
+            </div>
+
+            <div class="llm-translator_block flex-container">
+                <label for="llm_translation_submodel">Model:</label>
+                <select id="llm_translation_submodel">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+
+            <div class="llm-translator_block flex-container">
+                <label for="llm_translation_prompt">Translation Prompt:</label>
+                <textarea id="llm_translation_prompt" rows="4" class="text_pole"></textarea>
+            </div>
+
+            <div class="llm-translator_block flex-container">
+                <label for="llm_translation_auto_mode">Auto Translation:</label>
+                <select id="llm_translation_auto_mode">
+                    <option value="none">Disabled</option>
+                    <option value="responses">AI Responses Only</option>
+                    <option value="inputs">User Inputs Only</option>
+                    <option value="both">Both</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
