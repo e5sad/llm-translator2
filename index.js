@@ -11,6 +11,7 @@ import { extension_settings, getContext, renderExtensionTemplateAsync } from '..
 import { secret_state } from '../../../secrets.js';
 
 const extensionName = "llm-translator2";
+const extensionFolderPath = `scripts/extensions/third-party/${extensionName}`;
 
 // Define provider options
 const llmProviders = {
@@ -158,10 +159,15 @@ function updateSubmodels(provider) {
 
 jQuery(async () => {
     // Initialize UI and events
-    const html = await renderExtensionTemplateAsync(extensionName, 'example.html');
-    $('#llm_translation_container').append(html);
+    try {
+        const response = await fetch(`${extensionFolderPath}/example.html`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const htmlContent = await response.text();
+        $('#llm_translation_container').append(htmlContent);
 
-    loadSettings();
+        loadSettings();
 
     // Event handlers
     $('#llm_translation_provider').on('change', function() {
