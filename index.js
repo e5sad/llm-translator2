@@ -159,34 +159,42 @@ function updateSubmodels(provider) {
 
 jQuery(async () => {
     // Initialize UI and events
+    const extensionName = "llm-translator2";
+    const extensionFolderPath = `scripts/extensions/third-party/${extensionName}`;
+
     try {
         const response = await fetch(`${extensionFolderPath}/example.html`);
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`HTTP 오류! 상태 코드: ${response.status}`);
         }
         const htmlContent = await response.text();
         $('#llm_translation_container').append(htmlContent);
 
         loadSettings();
 
-    // Event handlers
-    $('#llm_translation_provider').on('change', function() {
-        extension_settings.llm_translate.provider = $(this).val();
-        updateSubmodels(extension_settings.llm_translate.provider);
-        saveSettingsDebounced();
-    });
+        // Event handlers
+        $('#llm_translation_provider').on('change', function() {
+            extension_settings.llm_translate.provider = $(this).val();
+            updateSubmodels(extension_settings.llm_translate.provider);
+            saveSettingsDebounced();
+        });
 
-    $('#llm_translation_submodel').on('change', function() {
-        extension_settings.llm_translate.submodel = $(this).val();
-        saveSettingsDebounced();
-    });
+        $('#llm_translation_submodel').on('change', function() {
+            extension_settings.llm_translate.submodel = $(this).val();
+            saveSettingsDebounced();
+        });
 
-    $('#llm_translation_prompt').on('change', function() {
-        extension_settings.llm_translate.translation_prompt = $(this).val();
-        saveSettingsDebounced();
-    });
+        $('#llm_translation_prompt').on('change', function() {
+            extension_settings.llm_translate.translation_prompt = $(this).val();
+            saveSettingsDebounced();
+        });
 
-    // Register message handlers
-    eventSource.on(event_types.CHARACTER_MESSAGE_RENDERED, translateIncomingMessage);
-    eventSource.on(event_types.USER_MESSAGE_RENDERED, translateOutgoingMessage);
+        // Register message handlers
+        eventSource.on(event_types.CHARACTER_MESSAGE_RENDERED, translateIncomingMessage);
+        eventSource.on(event_types.USER_MESSAGE_RENDERED, translateOutgoingMessage);
+
+    } catch (error) {
+        console.error('템플릿 로드 오류:', error);
+        toastr.error(`템플릿을 로드하는 데 실패했습니다: ${error.message}`, '오류');
+    }
 });
