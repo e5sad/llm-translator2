@@ -159,7 +159,7 @@ function updateSubmodels(provider) {
 
 jQuery(async () => {
     // Initialize UI and events
-    const html = await renderExtensionTemplateAsync(`${extensionFolderPath}/example.html);
+    const html = await renderExtensionTemplateAsync(`${extensionFolderPath}/example.html`);
     $('#llm_translation_container').append(html);
 
     loadSettings();
