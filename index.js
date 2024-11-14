@@ -11,7 +11,7 @@ import { extension_settings, getContext, renderExtensionTemplateAsync } from '..
 import { secret_state } from '../../../secrets.js';
 
 const extensionName = "llm-translator2";
-const translationFolderPath = './data/translations';
+const translationFolderPath = './data/llm-translator2';
 
 // Define provider options
 const llmProviders = {
