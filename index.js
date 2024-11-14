@@ -8,7 +8,7 @@ import {
     updateMessageBlock,
 } from '../../../../script.js';
 import { extension_settings, getContext, renderExtensionTemplateAsync } from '../../../extensions.js';
-import { secret_state } from '../../../../public/scripts/secret.js';
+import { secret_state } from '../../../../../../secret.js';
 
 // Define provider options
 const llmProviders = {
