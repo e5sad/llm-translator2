@@ -10,6 +10,9 @@ import {
 import { extension_settings, getContext, renderExtensionTemplateAsync } from '../../../extensions.js';
 import { secret_state } from '../../../secrets.js';
 
+const extensionName = "llm-translator2";
+const translationFolderPath = './data/translations';
+
 // Define provider options
 const llmProviders = {
     OPENAI: 'openai',
@@ -156,7 +159,7 @@ function updateSubmodels(provider) {
 
 jQuery(async () => {
     // Initialize UI and events
-    const html = await renderExtensionTemplateAsync('llm_translate', 'index');
+    const html = await renderExtensionTemplateAsync(`${extensionFolderPath}/example.html);
     $('#llm_translation_container').append(html);
 
     loadSettings();
